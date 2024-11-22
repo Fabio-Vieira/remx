@@ -4,7 +4,7 @@ A package with meta-analytic approximations for relational event models.
 This package supports mixed-effects models, data streams, and large networks. 
 
 # Installation 
-```r{}
+```R
 install.packages("devtools")
 devtools::install_github("TilburgNetworkGroup/remify") 
 devtools::install_github("TilburgNetworkGroup/remstimate")
@@ -20,7 +20,7 @@ The **remx** function is the main function of the package. It fits all multileve
 
 ### Tie-oriented Model
 
-```r{}
+```R
 
 #----------------------------#
 #     Tie-Oriented model     #
@@ -50,7 +50,7 @@ print(fit)
 
 ### Actor-oriented Model
 
-```r{}
+```R
 
 #----------------------------#
 #    Actor-Oriented model    #
@@ -77,19 +77,19 @@ These functions are inspired by the functions contained in the **lme4** package.
 
 ### Random effects
 
-```r{}
+```R
 ranef_metarem(fit)
 ```
 
 ### Fixed effects
 
-```r{}
+```R
 fixef_metarem(fit)
 ```
 
 ### Random-effect covariance matrix
 
-```r{}
+```R
 VarCov_metarem(fit)
 ```
 
@@ -101,7 +101,7 @@ In this case, we have a relational-event network that is augmented with addition
 
 We need to use the arguments **start** and **stop** from **remstats** in order to compute the statistics for a specific portion of the event sequence. For instance, if we wish to fit the model in batches of 500, we need to declare **start** = 1 and **stop** = 500, then **start** = 501 and **stop** = 1000, and so on.
 
-```r{}
+```R
 
 #Now let's simulate a network
 edgelist <- stream$edgelist
@@ -135,7 +135,7 @@ for(i in 2:length(events)){
 
 ## Fitting the model
 
-```r{}
+```R
 #Let's compute the effects for the first 7 batches of the networks
 fit <- strem(data[1:7])
 
@@ -147,7 +147,7 @@ print(fit)
 
 The package also contains a generic plot function, that can be used to plot the trends, along with 95\% intervals, of the estimated effects across each batch. This function only works for models fitted with the function **strem**.
 
-```r{}
+```R
 #Getting a plot of the estimates with confidence intervals
 plot(fit)
 
@@ -157,7 +157,7 @@ plot(fit)
 
 We can update our estimates with new batches by simply passing a model previously fitted with the **strem** function to the argument **model** and use the argument **update** = TRUE.
 
-```r{}
+```R
 #Now we can update the model with the remaining 3 batches
 fit <- strem(data[8:10], update = T, model = fit)
 
@@ -169,7 +169,7 @@ print(fit)
 
 Vieira, F., Leenders, R. & Mulder, J. Fast meta-analytic approximations for relational event models: applications to data streams and multilevel data. J Comput Soc Sc 7, 1823–1859 (2024). https://doi.org/10.1007/s42001-024-00290-7
 
-```{r}
+```R
 @article{vieira2024fast,
   title={Fast meta-analytic approximations for relational event models: applications to data streams and multilevel data},
   author={Vieira, Fabio and Leenders, Roger and Mulder, Joris},
